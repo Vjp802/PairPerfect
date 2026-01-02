@@ -107,37 +107,69 @@ enum AddOn: String, CaseIterable, Codable {
     case demiGlace = "Demi-glace"
     case bourbonGlaze = "Bourbon Glaze"
     case shrimpOscar = "Shrimp Oscar"
+    case chimichurri = "Chimichurri"
+    case garlicButter = "Garlic Butter"
+    case mushroomRagout = "Mushroom Ragout"
+    case truffleButter = "Truffle Butter"
+    case bearnaise = "Béarnaise"
+    case horseradishCream = "Horseradish Cream"
+    case redWineReduction = "Red Wine Reduction"
+    case caramelizedOnions = "Caramelized Onions"
     
     var spiceAdjustment: Int {
         switch self {
         case .auPoivre: return 3
+        case .chimichurri: return 3
+        case .horseradishCream: return 2
         case .bordelaise: return 1
+        case .bourbonGlaze: return 1
         case .blueCheese: return 0
         case .demiGlace: return 0
-        case .bourbonGlaze: return 1
         case .shrimpOscar: return 0
+        case .garlicButter: return 1
+        case .mushroomRagout: return 0
+        case .truffleButter: return 0
+        case .bearnaise: return 1
+        case .redWineReduction: return 0
+        case .caramelizedOnions: return 0
         }
     }
     
     var funkAdjustment: Int {
         switch self {
         case .blueCheese: return 4
+        case .truffleButter: return 5
+        case .mushroomRagout: return 3
         case .bordelaise: return 2
+        case .redWineReduction: return 2
+        case .chimichurri: return 1
         case .auPoivre: return 1
         case .demiGlace: return 1
+        case .caramelizedOnions: return 1
         case .bourbonGlaze: return 0
         case .shrimpOscar: return -2
+        case .garlicButter: return 0
+        case .bearnaise: return 0
+        case .horseradishCream: return 0
         }
     }
     
     var richnessAdjustment: Int {
         switch self {
+        case .truffleButter: return 3
+        case .bearnaise: return 3
         case .demiGlace: return 2
         case .bourbonGlaze: return 2
         case .blueCheese: return 2
-        case .bordelaise: return 1
+        case .garlicButter: return 2
         case .shrimpOscar: return 2
+        case .bordelaise: return 1
         case .auPoivre: return 1
+        case .mushroomRagout: return 1
+        case .redWineReduction: return 1
+        case .chimichurri: return 0
+        case .horseradishCream: return 1
+        case .caramelizedOnions: return 1
         }
     }
 }

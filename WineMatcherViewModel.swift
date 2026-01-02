@@ -160,14 +160,33 @@ class WineMatcherViewModel: ObservableObject {
             parts.append("Soft tannins won't overpower your steak.")
         }
         
+        // Add-on specific pairings
         if steak.addOns.contains(.auPoivre) && wine.spiceLevel >= 6 {
             parts.append("The peppery notes echo your au poivre sauce beautifully.")
+        }
+        if steak.addOns.contains(.chimichurri) && wine.acidityLevel >= 6 {
+            parts.append("The wine's freshness complements the herbaceous chimichurri perfectly.")
         }
         if steak.addOns.contains(.blueCheese) && wine.funkLevel >= 5 {
             parts.append("Its earthy character plays nicely with the blue cheese.")
         }
+        if steak.addOns.contains(.truffleButter) && wine.funkLevel >= 6 {
+            parts.append("The wine's earthy notes mirror the truffle beautifully.")
+        }
+        if steak.addOns.contains(.mushroomRagout) && wine.funkLevel >= 4 {
+            parts.append("Earthy enough to handle the mushroom ragout.")
+        }
         if steak.addOns.contains(.shrimpOscar) {
             parts.append("Fresh enough to handle the shrimp oscar topping.")
+        }
+        if steak.addOns.contains(.bearnaise) && wine.oakLevel >= 5 {
+            parts.append("Rich oak notes complement the buttery béarnaise.")
+        }
+        if steak.addOns.contains(.horseradishCream) && wine.spiceLevel >= 5 {
+            parts.append("The wine's spice stands up to the horseradish kick.")
+        }
+        if steak.addOns.contains(.garlicButter) && wine.bodyLevel >= 7 {
+            parts.append("Full-bodied enough to match the richness of garlic butter.")
         }
         
         parts.append("This \(wine.region) \(wine.grape) brings \(getStyleDescriptor(wine: wine)).")
@@ -235,29 +254,96 @@ class WineMatcherViewModel: ObservableObject {
     // MARK: - Sample Data
     private func loadSampleWines() {
         wines = [
+            // California Cabernet Sauvignon
             Wine(name: "Stag's Leap Artemis", grape: "Cabernet Sauvignon", style: "Full-bodied red",
                  region: "Napa Valley, CA", price: 65, vintage: 2020, tanninLevel: 8, oakLevel: 7,
                  spiceLevel: 4, funkLevel: 2, bodyLevel: 9, acidityLevel: 6),
-            
-            Wine(name: "Duckhorn Merlot", grape: "Merlot", style: "Medium to full-bodied red",
-                 region: "Napa Valley, CA", price: 55, vintage: 2021, tanninLevel: 6, oakLevel: 6,
-                 spiceLevel: 3, funkLevel: 2, bodyLevel: 7, acidityLevel: 5),
-            
-            Wine(name: "Ridge Geyserville", grape: "Zinfandel Blend", style: "Bold red blend",
-                 region: "Sonoma, CA", price: 48, vintage: 2021, tanninLevel: 7, oakLevel: 5,
-                 spiceLevel: 8, funkLevel: 3, bodyLevel: 8, acidityLevel: 6),
-            
-            Wine(name: "Antica Terra Willamette", grape: "Pinot Noir", style: "Medium-bodied red",
-                 region: "Willamette Valley, OR", price: 75, vintage: 2020, tanninLevel: 5, oakLevel: 4,
-                 spiceLevel: 5, funkLevel: 6, bodyLevel: 6, acidityLevel: 7),
             
             Wine(name: "Caymus Cabernet", grape: "Cabernet Sauvignon", style: "Full-bodied red",
                  region: "Napa Valley, CA", price: 95, vintage: 2021, tanninLevel: 9, oakLevel: 8,
                  spiceLevel: 3, funkLevel: 1, bodyLevel: 10, acidityLevel: 5),
             
+            Wine(name: "Austin Hope Cabernet", grape: "Cabernet Sauvignon", style: "Full-bodied red",
+                 region: "Paso Robles, CA", price: 52, vintage: 2021, tanninLevel: 8, oakLevel: 7,
+                 spiceLevel: 4, funkLevel: 2, bodyLevel: 9, acidityLevel: 6),
+            
+            // Merlot
+            Wine(name: "Duckhorn Merlot", grape: "Merlot", style: "Medium to full-bodied red",
+                 region: "Napa Valley, CA", price: 55, vintage: 2021, tanninLevel: 6, oakLevel: 6,
+                 spiceLevel: 3, funkLevel: 2, bodyLevel: 7, acidityLevel: 5),
+            
+            // Zinfandel & Blends
+            Wine(name: "Ridge Geyserville", grape: "Zinfandel Blend", style: "Bold red blend",
+                 region: "Sonoma, CA", price: 48, vintage: 2021, tanninLevel: 7, oakLevel: 5,
+                 spiceLevel: 8, funkLevel: 3, bodyLevel: 8, acidityLevel: 6),
+            
+            Wine(name: "Turley Old Vines Zinfandel", grape: "Zinfandel", style: "Full-bodied red",
+                 region: "California", price: 44, vintage: 2021, tanninLevel: 7, oakLevel: 6,
+                 spiceLevel: 9, funkLevel: 2, bodyLevel: 9, acidityLevel: 5),
+            
+            // Pinot Noir
+            Wine(name: "Antica Terra Willamette", grape: "Pinot Noir", style: "Medium-bodied red",
+                 region: "Willamette Valley, OR", price: 75, vintage: 2020, tanninLevel: 5, oakLevel: 4,
+                 spiceLevel: 5, funkLevel: 6, bodyLevel: 6, acidityLevel: 7),
+            
+            Wine(name: "Belle Glos Las Alturas", grape: "Pinot Noir", style: "Full-bodied Pinot",
+                 region: "Santa Lucia Highlands, CA", price: 58, vintage: 2021, tanninLevel: 6, oakLevel: 5,
+                 spiceLevel: 4, funkLevel: 3, bodyLevel: 7, acidityLevel: 6),
+            
+            Wine(name: "Domaine Drouhin Dundee Hills", grape: "Pinot Noir", style: "Medium-bodied red",
+                 region: "Oregon", price: 42, vintage: 2020, tanninLevel: 5, oakLevel: 3,
+                 spiceLevel: 5, funkLevel: 5, bodyLevel: 6, acidityLevel: 7),
+            
+            // French Rhône
             Wine(name: "Beaucastel Châteauneuf", grape: "Grenache Blend", style: "Full-bodied red",
                  region: "Rhône, France", price: 85, vintage: 2019, tanninLevel: 7, oakLevel: 3,
-                 spiceLevel: 7, funkLevel: 7, bodyLevel: 8, acidityLevel: 6)
+                 spiceLevel: 7, funkLevel: 7, bodyLevel: 8, acidityLevel: 6),
+            
+            Wine(name: "Guigal Côtes du Rhône", grape: "Grenache Blend", style: "Medium-bodied red",
+                 region: "Rhône, France", price: 28, vintage: 2021, tanninLevel: 5, oakLevel: 2,
+                 spiceLevel: 6, funkLevel: 4, bodyLevel: 6, acidityLevel: 6),
+            
+            // Italian - Barolo & Super Tuscan
+            Wine(name: "Paolo Scavino Barolo", grape: "Nebbiolo", style: "Full-bodied, elegant",
+                 region: "Piedmont, Italy", price: 92, vintage: 2019, tanninLevel: 9, oakLevel: 4,
+                 spiceLevel: 5, funkLevel: 8, bodyLevel: 8, acidityLevel: 8),
+            
+            Wine(name: "Antinori Tignanello", grape: "Sangiovese Blend", style: "Super Tuscan",
+                 region: "Tuscany, Italy", price: 110, vintage: 2019, tanninLevel: 8, oakLevel: 6,
+                 spiceLevel: 4, funkLevel: 5, bodyLevel: 8, acidityLevel: 7),
+            
+            Wine(name: "Ruffino Chianti Classico Riserva", grape: "Sangiovese", style: "Medium-bodied red",
+                 region: "Tuscany, Italy", price: 32, vintage: 2019, tanninLevel: 6, oakLevel: 3,
+                 spiceLevel: 5, funkLevel: 6, bodyLevel: 6, acidityLevel: 7),
+            
+            // Argentine Malbec
+            Wine(name: "Catena Zapata Malbec", grape: "Malbec", style: "Full-bodied red",
+                 region: "Mendoza, Argentina", price: 58, vintage: 2020, tanninLevel: 7, oakLevel: 5,
+                 spiceLevel: 4, funkLevel: 2, bodyLevel: 8, acidityLevel: 6),
+            
+            Wine(name: "Alamos Malbec", grape: "Malbec", style: "Medium to full-bodied red",
+                 region: "Mendoza, Argentina", price: 26, vintage: 2021, tanninLevel: 6, oakLevel: 4,
+                 spiceLevel: 3, funkLevel: 2, bodyLevel: 7, acidityLevel: 5),
+            
+            // Spanish Tempranillo
+            Wine(name: "La Rioja Alta Reserva", grape: "Tempranillo", style: "Medium-bodied red",
+                 region: "Rioja, Spain", price: 48, vintage: 2016, tanninLevel: 6, oakLevel: 5,
+                 spiceLevel: 5, funkLevel: 5, bodyLevel: 7, acidityLevel: 7),
+            
+            // French Bordeaux
+            Wine(name: "Château Lynch-Bages", grape: "Bordeaux Blend", style: "Full-bodied red",
+                 region: "Pauillac, France", price: 120, vintage: 2018, tanninLevel: 9, oakLevel: 6,
+                 spiceLevel: 3, funkLevel: 4, bodyLevel: 9, acidityLevel: 7),
+            
+            // Burgundy
+            Wine(name: "Louis Jadot Gevrey-Chambertin", grape: "Pinot Noir", style: "Elegant red",
+                 region: "Burgundy, France", price: 78, vintage: 2020, tanninLevel: 6, oakLevel: 4,
+                 spiceLevel: 4, funkLevel: 7, bodyLevel: 6, acidityLevel: 8),
+            
+            // Washington State
+            Wine(name: "Columbia Crest Grand Estates Cab", grape: "Cabernet Sauvignon", style: "Full-bodied red",
+                 region: "Washington State", price: 28, vintage: 2020, tanninLevel: 7, oakLevel: 5,
+                 spiceLevel: 3, funkLevel: 1, bodyLevel: 8, acidityLevel: 6)
         ]
     }
 }
