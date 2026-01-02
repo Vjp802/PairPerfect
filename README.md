@@ -162,4 +162,4 @@ Once the app is working:
 - **Add more steak cuts** or expand to other proteins
 - **Export as a real app** to your iPhone for testing
 
-Enjoy your wine pairing app! 🍷
+Enjoy! 🍷
